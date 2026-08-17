@@ -171,10 +171,10 @@ Sole developer. I designed and built the complete solution end to end, including
 
 Thank you to the Decode Labs team for the project brief and technical guidance throughout the internship.
 
-## 🚀 Live Demo
-Explore the interactive dashboard here: [SegmentIQ Dashboard](https://customer-segmentation-yalda-ashrafi.streamlit.app/)
+##  Live Demo
+Explore the interactive dashboard here: https://customer-segmentation-yalda-ashrafi.streamlit.app/
 
-## 🎥 Project Video
+##  Project Video
 Watch the walkthrough video: [SegmentIQ Demo Video](https://drive.google.com/file/d/13elR05IHz748RgVklcIP4w9_sOhj5Sen/view?usp=sharing)
 
 ##  Conclusion
