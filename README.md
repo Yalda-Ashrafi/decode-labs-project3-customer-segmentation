@@ -66,7 +66,7 @@ What a Manager Can Do Without Writing Code
 
 The interface uses a consistent teal design system with animated transitions and hover states, so it is ready to present to management rather than looking like a debug tool.
 
-🗂️ Project Structure
+Project Structure
 SegmentIQ/
 │
 ├── app.py                  # Streamlit dashboard entry point
