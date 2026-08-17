@@ -1,0 +1,12 @@
+# Forces the light theme and replaces Streamlit's own dark chrome and red
+# accent with the CustomerSegmentationDashboard palette.
+[theme]
+base                     = "light"
+primaryColor             = "#00b8db"   # cyan  -- sliders, chips, focus rings
+backgroundColor          = "#FFFFFF"
+secondaryBackgroundColor = "#EDFDFF"   # soft aqua wash -- sidebar, widgets
+textColor                = "#0092b8"   # medium blue -- never black
+font                     = "sans serif"
+
+[client]
+toolbarMode = "minimal"
