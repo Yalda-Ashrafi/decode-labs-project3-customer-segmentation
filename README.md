@@ -1,173 +1,185 @@
 # decode-labs-project3-customer-segmentation
+# 🎯 SegmentIQ: Customer Segmentation Dashboard
 
-SegmentIQ
+Unsupervised learning that turns raw customer data into business personas anyone can act on.
 
-Customer Segmentation with Unsupervised Learning
+![Python](https://github.com/Yalda-Ashrafi/decode-labs-project3-customer-segmentation/blob/b0358166ec8a8e9d7eb7cd59de798d69cb4d2695/assets/1.png)
+![scikit-learn](https://github.com/Yalda-Ashrafi/decode-labs-project3-customer-segmentation/blob/b0358166ec8a8e9d7eb7cd59de798d69cb4d2695/assets/2.png)
+![Streamlit](https://github.com/Yalda-Ashrafi/decode-labs-project3-customer-segmentation/blob/b0358166ec8a8e9d7eb7cd59de798d69cb4d2695/assets/3.png)
+![pandas](https://github.com/Yalda-Ashrafi/decode-labs-project3-customer-segmentation/blob/b0358166ec8a8e9d7eb7cd59de798d69cb4d2695/assets/4.png)
+![Status](https://github.com/Yalda-Ashrafi/decode-labs-project3-customer-segmentation/blob/b0358166ec8a8e9d7eb7cd59de798d69cb4d2695/assets/5.png)
 
-Turning raw customer data into business personas that managers can actually act on.
+> Decode Labs Internship, Project 3
 
-Show Image Show Image Show Image Show Image Show Image
+## 💡 Overview
 
-📌 Overview
+SegmentIQ discovers the distinct customer groups hidden inside a single dataset, without any labelled training data.
 
-SegmentIQ is an end to end customer segmentation system built for Project 3 of the Decode Labs Internship.
+The pipeline applies **Principal Component Analysis (PCA)** to compress correlated features into their essential structure, then uses **K-Means clustering** to separate customers into natural segments. The optimal number of clusters is proven with elbow and silhouette validation rather than assumed.
 
-Businesses rarely serve one single audience. They serve several distinct groups hidden inside the same dataset. SegmentIQ finds those groups without any labelled data, using Principal Component Analysis (PCA) to compress the features down to their essential structure, and K-Means clustering to separate customers into natural segments.
+Each mathematical cluster is then translated into a **named business persona** with a spending profile and a recommended marketing action, and delivered through an interactive dashboard that a manager can explore without writing code.
 
-The result is not just a scatter plot. Every mathematical cluster is translated into a named business persona with a spending profile and a recommended marketing action, then delivered through an interactive Streamlit dashboard that anyone can explore.
+> A cluster label means nothing to a marketing team. A persona with a strategy attached does.
 
-A cluster label means nothing to a marketing manager. A persona with a strategy attached does.
+## ✨ Features
 
-🧠 Technical Workflow
-Step 1: Data Preprocessing
-Missing values detected and handled across all columns
-The Gender column encoded into numeric form
-All features scaled with StandardScaler
+* 📊 **Interactive Streamlit dashboard** for exploring every segment visually
+* 📈 **Elbow and silhouette validation plots** rendered live inside the app
+* 🧾 **Persona cards** translating each cluster into plain business language
+* 🔍 **Filter and drill down** into individual customer records by segment
+* ⬇️ **Exportable segmented dataset** ready for CRM or campaign tools
+* 📱 **Responsive light theme** designed to be presented to management
 
-Scaling matters here. K-Means measures distance, so without it annual income (in thousands) would completely overpower spending score (1 to 100) and the clusters would be meaningless.
+## 🧠 How It Works
 
-Step 2: Dimensionality Reduction with PCA
-PCA applied to the scaled feature matrix
-Components retained to preserve 95% of the total variance
-Removes multicollinearity and noise while keeping the real signal
-Produces a compact space suitable for both clustering and visualisation
-Step 3: K-Means Clustering
-K-Means fitted across a range of candidate cluster counts
-Cluster assignments computed on the PCA transformed data
-Step 4: Validating the Number of Clusters
+### Step 1: Data Preprocessing
 
-The number of clusters is proven, not assumed. Two independent methods were used.
+Missing values are handled, the `Gender` column is encoded into numeric form, and all features are scaled with `StandardScaler`.
 
-Elbow Method
+Scaling is essential here. K-Means measures distance, so without it annual income in thousands would completely overpower spending score on a 1 to 100 range.
 
-Plots the within cluster sum of squares against K, and shows the point where adding more clusters stops meaningfully reducing error.
+### Step 2: Dimensionality Reduction
 
-Silhouette Score
+PCA is applied to the scaled feature matrix, retaining enough components to preserve **95% of the total variance**. This removes multicollinearity and noise while keeping the real signal intact.
 
-Measures how tight each cluster is compared to how far apart the clusters are, confirming the segments are genuinely distinct rather than just numerous.
+### Step 3: Clustering
 
-Both methods agree on K = [insert your optimal K], giving a segmentation that can be defended with evidence.
+K-Means is fitted across a range of candidate cluster counts on the PCA transformed data.
 
-Step 5: Persona Creation
+### Step 4: Validation
 
-Each cluster centroid is profiled across age, income and spending behaviour, then translated into a business readable persona. Every persona card shows the size of the segment, its defining traits, and a suggested engagement strategy.
+Two independent methods confirm the right number of clusters.
 
-📊 The Interactive Dashboard
+| Method | What It Measures | Why It Matters |
+| :--- | :--- | :--- |
+| Elbow Method | Within cluster sum of squares against K | Finds where extra clusters stop reducing error |
+| Silhouette Score | Cluster cohesion against separation | Confirms segments are genuinely distinct |
 
-Built with Streamlit and designed for the person who needs the answer, not the notebook.
+Both methods agree on **K = [insert your optimal K]**.
 
-What a Manager Can Do Without Writing Code
-🔍 Explore every segment through interactive 2D and 3D cluster plots
-📈 Inspect the validation evidence, with the elbow curve and silhouette plots rendered live
-🧾 Read the persona cards, each cluster summarised in plain business language
-🎚️ Filter and drill down into individual customer records by segment
-⬇️ Export the segmented dataset for use in CRM or campaign tools
-📱 Use it on any screen size, with a clean light theme
+### Step 5: Persona Creation
 
-The interface uses a consistent teal design system with animated transitions and hover states, so it is ready to present to management rather than looking like a debug tool.
+Each cluster centroid is profiled across age, income and spending behaviour, then mapped to a business readable persona with its segment size, defining traits, and a suggested engagement strategy.
 
-Project Structure
-SegmentIQ/
-│
-├── app.py                  # Streamlit dashboard entry point
-├── run_pipeline.py         # Runs the full ML pipeline end to end
-│
-├── modules/
-│   ├── preprocessing.py    # Cleaning, encoding, scaling
-│   ├── dimensionality.py   # PCA with 95% variance retention
-│   ├── clustering.py       # K-Means, elbow, silhouette
-│   └── personas.py         # Cluster to business persona mapping
-│
-├── data/
-│   └── Mall_Customers.csv  # Source dataset
-│
-├── assets/                 # Screenshots and static files
-├── requirements.txt
-└── README.md
-⚙️ Installation and Usage
-Prerequisites
-Python 3.9 or higher
-pip
-1. Clone the Repository
-bash
+## 📁 Project Structure
+
+| Folder / File | Description |
+| :--- | :--- |
+| `app.py` | Streamlit dashboard entry point |
+| `run_pipeline.py` | Runs the full ML pipeline end to end |
+| `src/preprocessing.py` | Data cleaning, encoding and scaling |
+| `src/dimensionality.py` | PCA with 95% variance retention |
+| `src/clustering.py` | K-Means, elbow method, silhouette score |
+| `src/personas.py` | Cluster to persona mapping |
+| `data/Mall_Customers.csv` | Source dataset |
+| `assets/` | Screenshots and static files |
+| `requirements.txt` | Project dependencies |
+
+## ⚙️ Installation
+
+### 1. Clone the repository
+
+```bash
 git clone https://github.com/Yalda-Ashrafi/segmentiq.git
 cd segmentiq
-2. Create and Activate a Virtual Environment
+```
 
-Windows (PowerShell):
+### 2. Create a virtual environment
 
-powershell
+```bash
 python -m venv venv
+```
+
+### 3. Activate it
+
+Windows:
+
+```bash
 venv\Scripts\activate
+```
 
 macOS or Linux:
 
-bash
-python3 -m venv venv
+```bash
 source venv/bin/activate
-3. Install the Dependencies
-bash
+```
+
+### 4. Install dependencies
+
+```bash
 pip install -r requirements.txt
-4. Run the Pipeline
+```
 
-This generates the trained model artefacts and the clustered output.
+## 🚀 Usage
 
-bash
+### Run the full pipeline
+
+Generates the trained model artefacts and the clustered output.
+
+```bash
 python run_pipeline.py
-5. Launch the Dashboard
-bash
+```
+
+### Launch the dashboard
+
+```bash
 streamlit run app.py
+```
 
-The app opens automatically at http://localhost:8501
+The app opens automatically at `http://localhost:8501`.
 
-🖼️ Example Output
+## 🖼️ Example Output
 
 Screenshots to be added.
 
-Dashboard Home
+### Dashboard Home
 
 Landing view with the dataset summary and key metrics.
 
-Elbow and Silhouette Validation
+### Validation Plots
 
-The two plots used to select the optimal number of clusters.
+The elbow curve and silhouette analysis used to select the optimal K.
 
-Cluster Visualisation
+### Cluster Visualisation
 
 PCA projection with colour coded segments in 2D and 3D.
 
-Persona Cards
+### Persona Cards
 
-Business personas with their traits and recommended actions.
+Each segment summarised with its traits and recommended business action.
 
-🛠️ Technologies Used
-Python for the core language of the entire pipeline
-pandas for data loading, cleaning and transformation
-NumPy for numerical operations and array handling
-scikit-learn for StandardScaler, PCA, KMeans and silhouette metrics
-Matplotlib for elbow curves and static visualisations
-Seaborn for statistical plots and distribution analysis
-Streamlit for the interactive dashboard and deployment layer
-🎓 Acknowledgment
+## 🛠️ Dependencies
 
-This project was developed as Project 3 of the Decode Labs Internship, the unsupervised learning module of the program.
+| Library | Role in the Project |
+| :--- | :--- |
+| `python` | Core language, version 3.9 or higher |
+| `pandas` | Data loading, cleaning and transformation |
+| `numpy` | Numerical operations and array handling |
+| `scikit-learn` | StandardScaler, PCA, KMeans, silhouette metrics |
+| `matplotlib` | Elbow curves and static visualisations |
+| `seaborn` | Statistical plots and distribution analysis |
+| `streamlit` | Interactive dashboard and deployment layer |
 
-My Role
+## 🎓 Acknowledgment
 
-Sole developer. I designed and built the complete solution end to end, including the data preprocessing, the PCA implementation, K-Means clustering with elbow and silhouette validation, the cluster to persona translation logic, the modular code architecture, and the full Streamlit dashboard interface.
+This project was developed as Project 3 of the **Decode Labs Internship**, covering the unsupervised learning module of the program.
 
-Thank you to the Decode Labs team for the project brief and the technical guidance throughout the internship.
+### My Role
 
-🚀 Conclusion
+Sole developer. I designed and built the complete solution end to end, including the preprocessing pipeline, the PCA implementation, K-Means clustering with elbow and silhouette validation, the cluster to persona translation logic, the modular code architecture, and the full Streamlit dashboard interface.
 
-SegmentIQ demonstrates the step that separates a machine learning exercise from a business tool, which is translation.
+Thank you to the Decode Labs team for the project brief and technical guidance throughout the internship.
 
-Finding clusters is a solved technical problem. Making those clusters legible, so that a marketing lead can see which segment is under served and act on it the same afternoon, is where the value is created. By pairing statistically validated segmentation with an interface that requires no coding, SegmentIQ puts customer strategy directly in the hands of the people who make those decisions.
+## 📌 Conclusion
 
-Complexity in. Clarity out.
+Finding clusters is a solved technical problem. Making those clusters legible, so a marketing lead can see which segment is under served and act on it the same afternoon, is where the value is created.
 
-👩‍💻 Author
+By pairing statistically validated segmentation with an interface that requires no coding, SegmentIQ puts customer strategy directly in the hands of the people who make those decisions.
 
-Built by Yalda Ashrafi for the Decode Labs Internship 2026.
+**Complexity in. Clarity out.**
+
+## 👩‍💻 Author
+
+Built by **Yalda Ashrafi** for the Decode Labs Internship 2026.
 
 If you found this useful, consider giving the repo a ⭐
