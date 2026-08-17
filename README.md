@@ -1,6 +1,5 @@
-# decode-labs-project3-customer-segmentation
-# 🎯 SegmentIQ: Customer Segmentation Dashboard
-
+# SegmentIQ: Customer Segmentation with PCA & K-Means
+### Decode Labs Internship – Project 3
 Unsupervised learning that turns raw customer data into business personas anyone can act on.
 
 ![Python](https://github.com/Yalda-Ashrafi/decode-labs-project3-customer-segmentation/blob/b0358166ec8a8e9d7eb7cd59de798d69cb4d2695/assets/1.png)
@@ -11,7 +10,7 @@ Unsupervised learning that turns raw customer data into business personas anyone
 
 > Decode Labs Internship, Project 3
 
-## 💡 Overview
+##  Overview
 
 SegmentIQ discovers the distinct customer groups hidden inside a single dataset, without any labelled training data.
 
@@ -21,7 +20,7 @@ Each mathematical cluster is then translated into a **named business persona** w
 
 > A cluster label means nothing to a marketing team. A persona with a strategy attached does.
 
-## ✨ Features
+##  Features
 
 * 📊 **Interactive Streamlit dashboard** for exploring every segment visually
 * 📈 **Elbow and silhouette validation plots** rendered live inside the app
@@ -30,7 +29,7 @@ Each mathematical cluster is then translated into a **named business persona** w
 * ⬇️ **Exportable segmented dataset** ready for CRM or campaign tools
 * 📱 **Responsive light theme** designed to be presented to management
 
-## 🧠 How It Works
+## How It Works
 
 ### Step 1: Data Preprocessing
 
@@ -110,7 +109,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## 🚀 Usage
+##  Usage
 
 ### Run the full pipeline
 
@@ -128,9 +127,11 @@ streamlit run app.py
 
 The app opens automatically at `http://localhost:8501`.
 
-## 🖼️ Example Output
+##  Example Output
 
 Screenshots to be added.
+![Status](https://github.com/Yalda-Ashrafi/decode-labs-project3-customer-segmentation/blob/78d085f464622e911bc5940f9716cebb1b3058ab/assets/6.png)
+
 
 ### Dashboard Home
 
@@ -148,7 +149,7 @@ PCA projection with colour coded segments in 2D and 3D.
 
 Each segment summarised with its traits and recommended business action.
 
-## 🛠️ Dependencies
+## Dependencies
 
 | Library | Role in the Project |
 | :--- | :--- |
@@ -160,7 +161,7 @@ Each segment summarised with its traits and recommended business action.
 | `seaborn` | Statistical plots and distribution analysis |
 | `streamlit` | Interactive dashboard and deployment layer |
 
-## 🎓 Acknowledgment
+##  Acknowledgment
 
 This project was developed as Project 3 of the **Decode Labs Internship**, covering the unsupervised learning module of the program.
 
@@ -170,7 +171,7 @@ Sole developer. I designed and built the complete solution end to end, including
 
 Thank you to the Decode Labs team for the project brief and technical guidance throughout the internship.
 
-## 📌 Conclusion
+##  Conclusion
 
 Finding clusters is a solved technical problem. Making those clusters legible, so a marketing lead can see which segment is under served and act on it the same afternoon, is where the value is created.
 
