@@ -161,6 +161,16 @@ Each segment summarised with its traits and recommended business action.
 | `seaborn` | Statistical plots and distribution analysis |
 | `streamlit` | Interactive dashboard and deployment layer |
 
+# Project Name
+
+##  Dataset
+The main dataset used in this project is available here:  
+[Download Dataset](https://www.kaggle.com/code/anirudhchauhan/mall-customer-segmentation-data/input)
+
+##  Test Dataset
+For testing the upload functionality on the website, use the following test dataset:  
+[Download Test Dataset](https://drive.google.com/file/d/1nyDSy-ivWFZ19suZGm3VTVRruaejlZz8/view?usp=sharing)
+
 ##  Acknowledgment
 
 This project was developed as Project 3 of the **Decode Labs Internship**, covering the unsupervised learning module of the program.
